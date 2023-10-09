@@ -36,7 +36,7 @@ const Home = () => {
     {/* Single item */}
     <div className="carousel-item active">
       <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp"
+        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp"
         className="d-block w-100"
         alt="Sunset Over the City"
       />
@@ -48,7 +48,7 @@ const Home = () => {
     {/* Single item */}
     <div className="carousel-item">
       <img
-        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp"
+        src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp"
         className="d-block w-100"
         alt="Canyon at Nigh"
       />

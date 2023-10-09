@@ -1,10 +1,72 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { useState ,useEffect} from "react"
+import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
-  return (
-    <div>
-         <div>
+
+
+
+function Login () {
+    const [data,setData] = useState([]);
+    const [loading,setLoading] = useState(true);
+
+    const [formData,setFormData] = useState(
+        {
+          name: '',
+          age: ''
+        }
+    );
+  
+
+   const handleChange = (e) => {
+     const {name, value} = e.target;
+     setFormData( 
+        {
+           ...formData,
+            [name]: value
+        });
+    };
+
+useEffect(() => {
+    fetch('http://localhost:8080/api/control/allRecord')
+    .then((response)=> response.json())
+    .then((data)=>{      
+        setData(data);
+        setLoading(false);       
+    })
+    .catch((error)=>console.error('Problem fetching',error));
+    } ,[]);
+
+    // if(loading) {
+    //     return <div> Loading ........</div>;
+    // }
+
+
+    const navigate = useNavigate();
+const handleSubmit=(e)=>{
+
+    // fetch('http://localhost:8080/api/control/save',
+    //       {
+    //        method:'POST',
+    //        headers :{'Content-Type': 'application/json',},
+    //        body: JSON.stringify(formData),
+    //       })
+    //       .then(response=> response.json())
+    //       .then((data) => {
+    //         console.log ('success', data);
+    //       })
+    //       .catch((error) => {
+    //         console.log ('error ', error);
+    //       });
+     
+    //  const data = (await res.json()).result;
+        navigate('/home');
+
+        };
+         
+
+
+
+    return(
+      <div>
       <section className="vh-100" style={{ backgroundColor: "#eee", minHeight: '100vh' }}>
         <div className="container h-100">
           <div className="row justify-content-center align-items-center h-100">
@@ -18,7 +80,7 @@ const Login = () => {
                       </p>
                       <form
                         className="mx-1 mx-md-4"
-                        // onSubmit={loginform.handleSubmit}
+                        onSubmit={handleSubmit}
                       >
                         <div className="d-flex flex-row align-items-center mb-4">
                           <i className="fas fa-envelope fa-lg me-3 fa-fw" />
@@ -31,9 +93,9 @@ const Login = () => {
                             </label>
                             <input
                               type="email"
-                              id="email"
-                              // onChange={loginform.handleChange}
-                              // value={loginform.values.email}
+                              name="name"
+                              value={formData.name} 
+                              onChange={handleChange}
                               className="form-control"
                             />
                           </div>
@@ -56,7 +118,7 @@ const Login = () => {
                             />
                           </div>
                         </div>
-
+      
                         <div className="form-check d-flex justify-content-center mb-5">
                           <input
                             className="form-check-input me-2"
@@ -102,9 +164,8 @@ const Login = () => {
           </div>
         </div>
       </section>
-    </div>
-    </div>
-  )
-}
+      </div>
+    );
 
-export default Login
+}
+export default Login;
