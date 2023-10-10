@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Createstudent = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
+    const history = useNavigate()
     
     const header = {"Access-Control-Allow-Origin": "*"};
     
@@ -18,6 +19,7 @@ const Createstudent = () => {
         email:email,
         header,
       });
+      history("/readstudent");
     };
   return (
     <div>

@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Createstudent from './components/Createstudent';
+import Readstudent from './components/Readstudent';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/createstudent" element={<Createstudent />} />
+        <Route path="/readstudent" element={<Readstudent />} />
         <Route path="/" element={<Navigate to="home"/>} />
 
       </Routes>
