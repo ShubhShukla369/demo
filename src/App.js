@@ -4,6 +4,8 @@ import './App.css';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
+import Signup from './components/Signup';
+import Createstudent from './components/Createstudent';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/createstudent" element={<Createstudent />} />
         <Route path="/" element={<Navigate to="home"/>} />
 
       </Routes>
